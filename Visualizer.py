@@ -9,12 +9,25 @@ pgame.mixer.init() #initalizes the mixer element
 pgame.init() #initalizes the game screen
 
 
-pgame.mixer.music.load('ArchieCut.wav')
-sound_file = wave.open('ArchieCut.wav')
-data = wave.readframes()
+pgame.mixer.music.load('ArchieCutMono.wav')
+sound_file = wave.open('ArchieCutMono.wav')
+data = sound_file.readframes(44100*15)
 
 
 print sound_file.getparams()
 stringOfBytes = np.fromstring(data, '<H')
 #'<H' = little endian unsigned short
 #needed to grab the data from the sound
+
+lowest = 900000
+highest = 0
+
+for i in range(0, len(stringOfBytes), 882):
+    print stringOfBytes[i/882]
+    if lowest > stringOfBytes[i/882]:
+        lowest = stringOfBytes[i/882]
+    if highest < stringOfBytes[i/882]:
+        highest = stringOfBytes[i/882]
+
+print  "Lowest = ", lowest
+print "Highest = ", highest
