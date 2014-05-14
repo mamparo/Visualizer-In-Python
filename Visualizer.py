@@ -61,16 +61,22 @@ def barsVisualizer(highest, lowest, stringOfBytes):
     done = False
     tick = time.time()
     arrayStep = 0
+
+    
     pgame.display.init()#initializes the display element
     pgame.display.set_caption("Visualizer")
     screen.fill(WHITE)
     pgame.mixer.music.play()
+    #keeps playing until the user clicks the close button
     while not done:
+        #randomizes where the bars show up
         randomNumber = randint(0,4)
         screen.fill(WHITE)
+        #if the user clicks the close button, the program ends
         for event in pgame.event.get():
             if event.type == pgame.QUIT:
                 done = True
+        #sets the bars based on the sound frames
         if stringOfBytes[arrayStep] <= first:
             pgame.draw.aaline(screen, black, [20, 240], [620, 240], True)
             if(randomNumber == 0):
@@ -260,6 +266,8 @@ def barsVisualizer(highest, lowest, stringOfBytes):
                 pgame.draw.rect(screen, black, [540,240,20,-100])
                 pgame.draw.rect(screen, black, [570,240,20,-100])
                 pgame.draw.rect(screen, black, [600,240,20,-50])
+        #lots of if-else statesments due to the fact that we added a lot
+        #of bars
         pgame.display.update()
         time.sleep(0.05)
         arrayStep += 1
@@ -268,6 +276,7 @@ def barsVisualizer(highest, lowest, stringOfBytes):
     pgame.quit() #exits the module
 
 def colorVisualizer(highest, lowest, stringOfBytes):
+    WHITE = (255, 255, 255)
     #separates the sample ranges into sections
     rangeOf = highest - lowest
     divisionOf = rangeOf/6
@@ -285,6 +294,7 @@ def colorVisualizer(highest, lowest, stringOfBytes):
     screen.fill(WHITE)
     pgame.mixer.music.play()
 
+    #creates the circular visualizer based on the length of the string
     for i in range(0, len(stringOfBytes), 882):
         screen.fill(WHITE)
         if stringOfBytes[i] <= first:
@@ -304,17 +314,16 @@ def colorVisualizer(highest, lowest, stringOfBytes):
         pgame.display.update()
         time.sleep(0.02)
 
-    pgame.display.quit()#exits the display
-    pgame.quit() #exits the module
+    #pgame.display.quit()#exits the display
+    #pgame.quit() #exits the module
 
-
+#main function
 def main():
     music = pickMusic()
     stringBytes = framework(music)
     highRange = highestRange(highest, stringBytes)
     lowRange = lowestRange(lowest, stringBytes)
     colorVisualizer(highRange, lowRange, stringBytes)
-    #barsVisualizer(highRange, lowRange, stringBytes)
-
+    barsVisualizer(highRange, lowRange, stringBytes)
 
     

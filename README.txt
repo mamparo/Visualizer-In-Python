@@ -1,4 +1,4 @@
-Visualizer.py Version 1.0 05/13/2014
+Visualizer.py Version 1.01 05/14/2014
 
 SUMMARY
 -------
@@ -43,11 +43,14 @@ V0.9
 V1.0
 -Encapsulated all items into functions and created a main
 -Added user input to choose their own song files
+V1.01
+-Added comments throughout the code
+-Added screenshots to the zip
 
 
 INSTALLATION
 ------------
-Please install PYGAME 1.9, NUMPY, and PYTHON 2.7 before you run the program. Double click the .py file to run the program.
+Please install PYGAME 1.9, NUMPY, and PYTHON 2.7 before you run the program. Run IDLE (screenshot A), search through for visualizer.py(screenshot B) and open the module(screenshot C). Run the module and type in main() in the shell(screenshot D) and hit Enter. Have Fun! NOTE: Only uses .wav files. Cannot work with anything else.
 
 
 CONTACT INFO
@@ -58,4 +61,5 @@ Matthew DeAngelo: mdeangelo@csumb.edu
 
 Copyright 2014 CSUMB. All rights reserved.
 Code borrowed from "courageousillumination"
+Visit https://github.com/mamparo/Visualizer-In-Python for the repository
 Visit https://github.com/courageousillumination/visualizer/blob/master/visualizer.py for the base code
